@@ -1,0 +1,225 @@
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  font-family: 'Segoe UI', sans-serif;
+  background: #faf7f2;
+  color: #2d2118;
+  min-height: 100vh;
+}
+
+.app { max-width: 1100px; margin: 0 auto; padding: 24px 20px; }
+
+/* Header */
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 4px;
+}
+
+.header-left { display: flex; align-items: center; gap: 10px; }
+
+.logo-icon {
+  width: 34px; height: 34px;
+  background: #c67c4e;
+  border-radius: 8px;
+  display: flex; align-items: center; justify-content: center;
+  color: white; font-size: 18px;
+}
+
+header h1 { font-size: 1.4rem; font-weight: 500; color: #2d2118; }
+
+.header-date {
+  font-size: 13px; color: #9c8672;
+  margin-bottom: 20px;
+  padding-left: 44px;
+}
+
+.add-btn {
+  background: #c67c4e;
+  color: white;
+  border: none;
+  padding: 9px 18px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: 500;
+}
+.add-btn:hover { background: #b36a3e; }
+
+/* Stats row */
+.stats-row {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 10px;
+  margin-bottom: 20px;
+}
+.stat-card {
+  background: white;
+  border: 1px solid #ede5da;
+  border-radius: 10px;
+  padding: 14px 16px;
+}
+.stat-card .num { font-size: 24px; font-weight: 500; color: #2d2118; }
+.stat-card .lbl { font-size: 12px; color: #9c8672; margin-top: 2px; }
+
+/* Controls */
+.controls { display: flex; gap: 10px; margin-bottom: 6px; align-items: center; }
+
+.search-input {
+  flex: 1;
+  background: white;
+  border: 1px solid #e4d9cc;
+  color: #2d2118;
+  padding: 9px 14px;
+  border-radius: 8px;
+  font-size: 14px;
+}
+.search-input:focus { outline: none; border-color: #c67c4e; }
+.search-input::placeholder { color: #b8a898; }
+
+.filter-tabs { display: flex; gap: 6px; flex-wrap: wrap; }
+.filter-tabs button {
+  background: white;
+  border: 1px solid #e4d9cc;
+  color: #9c8672;
+  padding: 7px 14px;
+  border-radius: 20px;
+  cursor: pointer;
+  font-size: 13px;
+  white-space: nowrap;
+}
+.filter-tabs button.active { background: #c67c4e; color: white; border-color: #c67c4e; }
+.filter-tabs button:hover:not(.active) { border-color: #c67c4e; color: #c67c4e; }
+
+.section-label {
+  font-size: 12px;
+  font-weight: 500;
+  color: #b8a898;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  margin: 16px 0 12px;
+}
+
+/* Task grid */
+.task-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(290px, 1fr));
+  gap: 14px;
+}
+.empty { text-align: center; color: #9c8672; margin-top: 60px; font-size: 1rem; }
+
+/* Task card */
+.task-card {
+  background: white;
+  border-radius: 12px;
+  border: 1px solid #ede5da;
+  border-left: 3px solid #d4c4b0;
+  padding: 16px;
+  transition: transform 0.15s, border-color 0.15s;
+}
+.task-card:hover { transform: translateY(-2px); border-color: #d4c4b0; }
+.task-card.status-todo    { border-left-color: #b8a898; }
+.task-card.status-in-progress { border-left-color: #e5a83a; }
+.task-card.status-done    { border-left-color: #4aad6a; }
+.task-card.status-done h3 { text-decoration: line-through; color: #b8a898; }
+
+.task-header { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 8px; gap: 8px; }
+.task-header h3 { font-size: 14px; font-weight: 500; color: #2d2118; flex: 1; line-height: 1.4; }
+
+.priority-badge {
+  font-size: 11px;
+  padding: 3px 8px;
+  border-radius: 10px;
+  font-weight: 500;
+  white-space: nowrap;
+}
+.priority-badge.high   { background: #fbeae7; color: #b94a2c; }
+.priority-badge.medium { background: #fef4e6; color: #a06b1a; }
+.priority-badge.low    { background: #eaf5ec; color: #2e7d45; }
+
+.task-card p { font-size: 13px; color: #9c8672; line-height: 1.5; margin-bottom: 12px; }
+
+.task-footer { display: flex; justify-content: space-between; align-items: center; }
+
+.task-footer select {
+  background: #faf7f2;
+  border: 1px solid #e4d9cc;
+  color: #6b5c4e;
+  padding: 5px 8px;
+  border-radius: 6px;
+  font-size: 12px;
+  cursor: pointer;
+}
+
+.task-actions { display: flex; gap: 6px; }
+.task-actions button {
+  background: none;
+  border: 1px solid #e4d9cc;
+  color: #9c8672;
+  padding: 5px 10px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 12px;
+}
+.task-actions button:hover { border-color: #c67c4e; color: #c67c4e; }
+.delete-btn:hover { background: #fbeae7 !important; border-color: #b94a2c !important; color: #b94a2c !important; }
+
+/* Modal */
+.modal-overlay {
+  position: fixed; inset: 0;
+  background: rgba(45, 33, 24, 0.4);
+  display: flex; align-items: center; justify-content: center;
+  z-index: 100;
+}
+.modal {
+  background: white;
+  padding: 28px;
+  border-radius: 14px;
+  border: 1px solid #ede5da;
+  width: 90%;
+  max-width: 480px;
+}
+.modal h2 { font-size: 16px; font-weight: 500; color: #2d2118; margin-bottom: 18px; }
+
+/* Form */
+.task-form { display: flex; flex-direction: column; gap: 12px; }
+.task-form input, .task-form textarea, .task-form select {
+  background: #faf7f2;
+  border: 1px solid #e4d9cc;
+  color: #2d2118;
+  padding: 9px 12px;
+  border-radius: 8px;
+  font-size: 14px;
+  font-family: inherit;
+}
+.task-form input:focus, .task-form textarea:focus, .task-form select:focus {
+  outline: none;
+  border-color: #c67c4e;
+}
+.task-form textarea { min-height: 80px; resize: vertical; }
+.task-form input::placeholder, .task-form textarea::placeholder { color: #b8a898; }
+
+.form-actions { display: flex; gap: 10px; }
+.form-actions button { flex: 1; padding: 10px; border-radius: 8px; cursor: pointer; font-size: 14px; }
+.form-actions button[type="submit"] { background: #c67c4e; color: white; border: none; font-weight: 500; }
+.form-actions button[type="submit"]:hover { background: #b36a3e; }
+.form-actions button[type="button"] { background: white; border: 1px solid #e4d9cc; color: #6b5c4e; }
+.form-actions button[type="button"]:hover { border-color: #c67c4e; }
+
+.error {
+  color: #b94a2c;
+  background: #fbeae7;
+  padding: 8px 12px;
+  border-radius: 6px;
+  font-size: 13px;
+}
+
+/* Responsive */
+@media (max-width: 640px) {
+  header h1 { font-size: 1.1rem; }
+  .stats-row { grid-template-columns: repeat(2, 1fr); }
+  .controls { flex-direction: column; }
+  .search-input { width: 100%; }
+  .task-grid { grid-template-columns: 1fr; }
+}
